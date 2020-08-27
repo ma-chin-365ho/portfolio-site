@@ -1,18 +1,27 @@
 //const http = require('http');
 const https = require('https');
 const hogan = require("hogan.js");
+const fs = require('fs');
 
-const hostname = 'www.ma299.me';
-// const hostname = '127.0.0.1'
-// const port = 80;
-// const port = 443;
-// const port = 8443;
-const port = 3000;
+const env_setting = {
+    production : {
+        hostname : 'www.ma299.me',
+        port : 3000,
+        ssl_server_key : '/etc/letsencrypt/live/www.ma299.me/privkey.pem',
+        ssl_server_crt : '/etc/letsencrypt/live/www.ma299.me/cert.pem'
+    },
+    development : {
+        hostname : '127.0.0.1',
+        port : 3000,
+        ssl_server_key : '/Users/stmsnr/server.key',
+        ssl_server_crt : '/Users/stmsnr/server.crt'
+    }
+}
 
-var ssl_server_key = '/etc/letsencrypt/live/www.ma299.me/privkey.pem';
-var ssl_server_crt = '/etc/letsencrypt/live/www.ma299.me/cert.pem';
-
-var fs = require('fs');
+const hostname = env_setting[process.env.NODE_ENV]['hostname'];
+const port = env_setting[process.env.NODE_ENV]['port'];
+var ssl_server_key = env_setting[process.env.NODE_ENV]['ssl_server_key'];
+var ssl_server_crt = env_setting[process.env.NODE_ENV]['ssl_server_crt'];
 
 var options = {
         key: fs.readFileSync(ssl_server_key),
