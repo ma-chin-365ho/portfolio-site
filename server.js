@@ -1,15 +1,27 @@
-const http = require('http');
+//const http = require('http');
+const https = require('https');
 const hogan = require("hogan.js");
- 
-// const hostname = 'www.ma299.me';
-const hostname = '127.0.0.1'
+
+const hostname = 'www.ma299.me';
+// const hostname = '127.0.0.1'
 // const port = 80;
+// const port = 443;
+// const port = 8443;
 const port = 3000;
- 
+
+var ssl_server_key = '/etc/letsencrypt/live/www.ma299.me/privkey.pem';
+var ssl_server_crt = '/etc/letsencrypt/live/www.ma299.me/cert.pem';
+
 var fs = require('fs');
 
+var options = {
+        key: fs.readFileSync(ssl_server_key),
+        cert: fs.readFileSync(ssl_server_crt)
+};
+
 /***************************************************************/
-const server = http.createServer((req, res) => {
+// const server = http.createServer((req, res) => {
+const server = https.createServer(options, (req, res) => {
     fs.readFile('./public/index.html', 'utf-8' , doReard );    
     function doReard(err, data) {
         var tmpl_index = hogan.compile(data);
