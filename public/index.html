@@ -16,31 +16,107 @@
   <link rel="apple-touch-icon" href="icon.png">
   <!-- Place favicon.ico in the root directory -->
  
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/main.css">
- 
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous"> 
+  <!-- <link rel="stylesheet" href="./index.css"> -->
+  <style type="text/css">
+    div.menu-margin {
+      margin-top: 100px;
+    }
+    div.cstm-menu {
+      background-color : #FFFFFF;
+    }
+    h1 {
+      padding-bottom: .5em;
+      border-bottom: 3px double #ccc;
+    }
+    h2 {
+        padding: .25em 0 .5em .75em;
+        border-left: 6px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        margin-top: 50px;
+    }
+  </style>
   <meta name="theme-color" content="#fafafa">
 </head>
  
 <body>
-  <h1>まー作品紹介</h1>
-  <p>youtube</p>
+  <div class="pure-menu pure-menu-horizontal pure-menu-fixed cstm-menu">
+    <h1>まーの成果物リスト</h1>  
+    <ul class="pure-menu-list">
+      <li class="pure-menu-item">
+        <a href="#" class="pure-menu-link">Youtube</a>
+      </li>
+      <li class="pure-menu-item">
+        <a href="#" class="pure-menu-link">Qiita</a>
+      </li>
+      <li class="pure-menu-item">
+        <a href="#" class="pure-menu-link">Twitter</a>
+      </li>
+      <li class="pure-menu-item">
+        <a href="#" class="pure-menu-link">Soundcloud</a>
+      </li>
+      <li class="pure-menu-item">
+        <a href="#" class="pure-menu-link">Instagram</a>
+      </li>
+      <li class="pure-menu-item">
+        <a href="#" class="pure-menu-link">Email</a>
+      </li>
+    </ul>
+  </div>
+  <div class="menu-margin"><p>&nbsp;</p></div>
+  <h2>Youtube</h2>
+  <p>チャンネル</p>
   <p><a href="https://www.youtube.com/channel/UCD0it6kq_2HBn3uMACiX_3A">https://www.youtube.com/channel/UCD0it6kq_2HBn3uMACiX_3A</a></p>
-  {{#youtube}}{{&.}}{{/youtube}}
+  <div class="pure-g">
+    {{#youtube}}
+      <div class="pure-u-2-24"></div>
+      <div class="pure-u-8-24">{{&post1}}</div>
+      <div class="pure-u-4-24"></div>
+      <div class="pure-u-8-24">{{&post2}}</div>
+      <div class="pure-u-2-24"></div>
+    {{/youtube}}
+  </div>
 
-  <p>Qiita</p>
+  <h2>Qiita</h2>
   <p><a href="https://qiita.com/ma-chin-365ho">https://qiita.com/ma-chin-365ho</a></p>
 
-  <p>twitter</p>
-  <a class="twitter-timeline" data-width="300" data-height="600" data-theme="dark" href="https://twitter.com/ma_chin_365?ref_src=twsrc%5Etfw">Tweets by ma_chin_365</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <h2>Github</h2>
+  <p><a href="https://github.com/ma-chin-365ho">https://github.com/ma-chin-365ho</a></p>
 
-  <p>soundcloud</p>
-  {{#soundcloud}}{{&.}}{{/soundcloud}}
+  <h2>Twitter</h2>
+  <div class="pure-g">
+    <div class="pure-u-2-24"></div>
+    <div class="pure-u-8-24">
+      <a class="twitter-timeline" data-width="300" data-height="600" data-theme="dark" href="https://twitter.com/ma_chin_365?ref_src=twsrc%5Etfw">Tweets by ma_chin_365</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>      
+    </div>
+    <div class="pure-u-4-24"></div>
+    <div class="pure-u-8-24"></div>
+    <div class="pure-u-2-24"></div>
+</div>
 
-  <p>instagram</p>
-  {{#instagram}}{{&.}}{{/instagram}}
-  
-  <p>mail</p>
+  <h2>Soundcloud</h2>
+  <div class="pure-g">
+    {{#soundcloud}}
+      <div class="pure-u-2-24"></div>
+      <div class="pure-u-8-24">{{&post1}}</div>
+      <div class="pure-u-4-24"></div>
+      <div class="pure-u-8-24">{{&post2}}</div>
+      <div class="pure-u-2-24"></div>
+    {{/soundcloud}}
+  </div>
+
+  <h2>Instagram</h2>
+  <div class="pure-g">
+    {{#instagram}}
+      <div class="pure-u-2-24"></div>
+      <div class="pure-u-8-24">{{&post1}}</div>
+      <div class="pure-u-4-24"></div>
+      <div class="pure-u-8-24">{{&post2}}</div>
+      <div class="pure-u-2-24"></div>
+    {{/instagram}}
+  </div>
+
+  <h2>Email</h2>
   st.msnr.wk@gmail.com
 
   <script src="js/vendor/modernizr-3.11.2.min.js"></script>
