@@ -42,6 +42,7 @@ const conn = mariadb.createConnection(
 
 /***************************************************************/
 var v_youtube_postings = [];
+var v_qiita_postings = [];
 var v_soundcloud_postings = [];
 var v_instagram_postings = [];
 
@@ -58,6 +59,7 @@ conn.query(query_text, (db_err, emb_html_rows) => {
     // console.log(emb_html_rows.length);
 
     var youtube_postings = [];
+    var qiita_postings = [];
     var soundcloud_postings = [];
     var instagram_postings = [];
 
@@ -66,6 +68,10 @@ conn.query(query_text, (db_err, emb_html_rows) => {
         if (emb_html_rows[i]['web_site_nm'] == 'Yotube')
         {
             youtube_postings.push(emb_html_rows[i]['html']);
+        }
+        else if (emb_html_rows[i]['web_site_nm'] == 'Qiita')
+        {
+            qiita_postings.push(emb_html_rows[i]['html']);
         }
         else if (emb_html_rows[i]['web_site_nm'] == 'Soundcloud')
         {
@@ -93,6 +99,8 @@ conn.query(query_text, (db_err, emb_html_rows) => {
         idx++;
     });
     if ((idx % 2) == 1) {v_youtube_postings.push(v_tmpLine);}
+
+    v_qiita_postings = qiita_postings;
 
     v_tmpLine = { post1 : '', post2 : '' };
     idx = 0;
@@ -134,6 +142,7 @@ const server = https.createServer(options, (req, res) => {
             var tmpl_index = hogan.compile(data);
             var res_data = tmpl_index.render({
                 youtube: v_youtube_postings,
+                qiita: v_qiita_postings,
                 soundcloud: v_soundcloud_postings,
                 instagram: v_instagram_postings
             });
