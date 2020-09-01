@@ -6,7 +6,7 @@ GRANT ALL PRIVILEGES ON `madb`.* TO 'pgusr';
 
 use madb;
 
-create table emb_html(id int unsigned NOT NULL PRIMARY KEY, html TEXT(20000), web_site_id tinyint unsigned);
+create table emb_html(id int unsigned NOT NULL, html TEXT(20000), web_site_id tinyint unsigned);
 create table web_site(id tinyint unsigned NOT NULL PRIMARY KEY, nm varchar(64));
 
 
