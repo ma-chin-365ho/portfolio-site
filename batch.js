@@ -16,6 +16,8 @@ const conn = mariadb.createConnection(
 
 const URL_MY_QIITA = 'https://qiita.com/api/v2/users/ma-chin-365ho/items';
 
+// const URL_QIITA_OEMBED_ENDPOINT = 'https://qiita.com/oembed';
+
 const get_qiita_options = {
     url: URL_MY_QIITA,
     method: 'GET',
@@ -27,7 +29,7 @@ const html_mst = '<p><a href="{{url}}">{{title}}</a>&nbsp&nbspLGTM:{{likes_count
 const query_text_1 = 
     "DELETE "                + 
     " FROM emb_html"         + 
-    " WHERE id = ?"          + 
+    " WHERE web_site_id = ?"          + 
     ";";
 
 const query_text_2_base1 = 
