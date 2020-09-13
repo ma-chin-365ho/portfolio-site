@@ -63,7 +63,10 @@ function urlToHtml_OEmbed(urls, callback) {
         request(get_instagram_options_2, function (error, response, oembed) {
             html_data.push(oembed.html);
             // console.log(urls.length);
-            urlToHtml_OEmbed(urls, callback);
+            urlToHtml_OEmbed(
+                urls,
+                function(){ replace_db_record(5); }
+            );
         });
     }
 }
