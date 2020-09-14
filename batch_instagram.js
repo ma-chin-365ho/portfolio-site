@@ -46,8 +46,16 @@ request(get_instagram_options_1, function (error, response, posts) {
     posts.media.data.forEach(data => {
         url_list.push(data.permalink);
     });
-    //console.log(url_list);
-    urlToHtml_OEmbed(url_list, function() {console.log(html_data); conn.end(); /* replace_db_record(5) */ return;});
+    // console.log(url_list);
+    urlToHtml_OEmbed(
+        url_list,
+        function() {
+            // console.log(html_data);
+            // conn.end();
+            replace_db_record(5);
+            return;
+        }
+    );
 });
 
 function urlToHtml_OEmbed(urls, callback) {
@@ -65,7 +73,7 @@ function urlToHtml_OEmbed(urls, callback) {
             // console.log(urls.length);
             urlToHtml_OEmbed(
                 urls,
-                function(){ replace_db_record(5); }
+                callback
             );
         });
     }
@@ -76,6 +84,7 @@ function replace_db_record(web_site_id) {
         let i = 0;
         let query_param_2 = [];
         var query_text_2 = query_text_2_base1;
+        // console.log(html_data);
         html_data.forEach(html => {
             // make query
             query_text_2 = query_text_2 + query_text_2_base2;
