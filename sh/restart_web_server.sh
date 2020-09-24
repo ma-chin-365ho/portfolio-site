@@ -1,8 +1,11 @@
-#!/bin/zsh
+#!/bin/sh
 
 cd /var/www/html
 
 forever stop server.js
+
+# 下書き直す。
+# ~/first_setting.sh
 
 # Update Instagram HTML
 node batch_instagram.js
