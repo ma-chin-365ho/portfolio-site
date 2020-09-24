@@ -1,7 +1,7 @@
 
+#!/bin/sh
 
-
-rem export NODE_ENV=production
+# export NODE_ENV=production
 export NODE_ENV=development
 
 
